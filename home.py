@@ -2,11 +2,11 @@ import streamlit as st
 import pandas as pd
 
 # Judul Aplikasi
-st.title("Analisis Ulasan Aplikasi")
+st.title("Analisis Ulasan Aplikasi Marketplace")
 
 # Penjelasan
 st.markdown("""
-Aplikasi ini memungkinkan Anda untuk menganalisis ulasan aplikasi berdasarkan file CSV. 
+Aplikasi ini untuk menganalisis ulasan dan membandingkan pada suatu aplikasi. 
 Unggah satu atau lebih file CSV dengan format berikut:
 - **review**: Teks ulasan aplikasi.
 """)
