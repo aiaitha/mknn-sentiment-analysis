@@ -6,34 +6,42 @@ st.title("Analisis Ulasan Aplikasi")
 
 # Penjelasan
 st.markdown("""
-Aplikasi ini memungkinkan Anda untuk menganalisis ulasan pada aplikasi marketplace. """)
+Aplikasi ini memungkinkan Anda untuk menganalisis ulasan aplikasi berdasarkan file CSV. 
+Unggah satu atau lebih file CSV dengan format berikut:
+- **review**: Teks ulasan aplikasi.
+""")
 
-
-# Komponen File Uploader
-uploaded_file = st.file_uploader("Unggah file CSV berisi ulasan aplikasi", type="csv")
+# Komponen File Uploader (multi-file)
+uploaded_files = st.file_uploader("Unggah file CSV berisi ulasan aplikasi", type="csv", accept_multiple_files=True)
 
 # Jika file diunggah
-if uploaded_file:
-    try:
-        # Membaca file CSV
-        data = pd.read_csv(uploaded_file)
-        
-        # Menampilkan data yang diunggah
-        st.subheader("Data Ulasan yang Diupload:")
-        st.write(data.head())
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        try:
+            # Membaca file CSV
+            data = pd.read_csv(uploaded_file)
+            
+            # Menampilkan data yang diunggah
+            st.subheader(f"Data Ulasan dari File: {uploaded_file.name}")
+            st.write(data.head())
 
-        # Memastikan kolom wajib tersedia
-        required_columns = {'application', 'review', 'sentiment'}
-        if not required_columns.issubset(data.columns):
-            st.error("File Anda tidak memiliki kolom yang sesuai. Pastikan file memiliki kolom: 'application', 'review', dan 'sentiment'.")
-        else:
-            st.success("File valid! Data siap untuk diproses lebih lanjut.")
-            # Menampilkan informasi jumlah aplikasi dan ulasan
-            unique_apps = data['application'].nunique()
-            total_reviews = len(data)
-            st.write(f"Jumlah aplikasi unik: **{unique_apps}**")
-            st.write(f"Total ulasan: **{total_reviews}**")
-    except Exception as e:
-        st.error(f"Terjadi kesalahan saat membaca file: {e}")
+            # Cek apakah kolom 'review' ada
+            if 'review' not in data.columns:
+                st.error(f"File {uploaded_file.name} tidak memiliki kolom 'review'. Pastikan file memiliki kolom 'review'.")
+            else:
+                # Jika tidak ada kolom 'application', minta input nama aplikasi
+                if 'application' not in data.columns:
+                    app_name = st.text_input(f"Masukkan Nama Aplikasi untuk file {uploaded_file.name}:")
+                    if app_name:
+                        data['application'] = app_name
+                    else:
+                        st.warning(f"Silakan masukkan nama aplikasi untuk file {uploaded_file.name}.")
+                
+                # Menampilkan informasi jumlah ulasan
+                total_reviews = len(data)
+                st.write(f"Total ulasan di file {uploaded_file.name}: **{total_reviews}**")
+                st.success("File valid! Data siap untuk diproses lebih lanjut.")
+        except Exception as e:
+            st.error(f"Terjadi kesalahan saat membaca file {uploaded_file.name}: {e}")
 else:
-    st.info("Silakan unggah file CSV untuk memulai analisis.")
+    st.info("Silakan unggah satu atau lebih file CSV untuk memulai analisis.")
