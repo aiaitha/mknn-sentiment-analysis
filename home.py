@@ -6,12 +6,8 @@ st.title("Analisis Ulasan Aplikasi")
 
 # Penjelasan
 st.markdown("""
-Aplikasi ini memungkinkan Anda untuk menganalisis ulasan aplikasi berdasarkan file CSV. 
-Unggah file CSV dengan format berikut:
-- **application**: Nama aplikasi
-- **review**: Teks ulasan
-- **sentiment**: Sentimen ulasan (positif, negatif, atau netral)
-""")
+Aplikasi ini memungkinkan Anda untuk menganalisis ulasan pada aplikasi marketplace. 
+
 
 # Komponen File Uploader
 uploaded_file = st.file_uploader("Unggah file CSV berisi ulasan aplikasi", type="csv")
