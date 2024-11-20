@@ -6,7 +6,7 @@ st.title("Analisis Ulasan Aplikasi")
 
 # Penjelasan
 st.markdown("""
-Aplikasi ini memungkinkan Anda untuk menganalisis ulasan pada aplikasi marketplace. 
+Aplikasi ini memungkinkan Anda untuk menganalisis ulasan pada aplikasi marketplace. """)
 
 
 # Komponen File Uploader
