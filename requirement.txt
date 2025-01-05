@@ -1,5 +1,5 @@
-streamlit
-matplotlib
-pandas
-numpy
-WordCloud
+streamlit>=1.0
+matplotlib>=3.0
+pandas>=1.0
+numpy>=1.20
+wordcloud>=1.8
