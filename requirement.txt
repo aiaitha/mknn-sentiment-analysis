@@ -1,5 +1,0 @@
-streamlit>=1.0
-import matplotlib.pyplot as plt
-pandas>=1.0
-numpy>=1.20
-wordcloud>=1.8
