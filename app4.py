@@ -135,6 +135,6 @@ if uploaded_files:
                 #     generate_wordcloud(X_test_word, predictions, 'negatif', f'WordCloud: Negatif ({file.name})')
                 #     generate_wordcloud(X_test_word, predictions, 'netral', f'WordCloud: Netral ({file.name})')
 
-                # except Exception as e:
-                #     st.error(f"Error saat menjalankan MKNN untuk {file.name}: {e}")
-                #     continue
+                except Exception as e:
+                    st.error(f"Error saat menjalankan MKNN untuk {file.name}: {e}")
+                    continue
