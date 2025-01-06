@@ -119,22 +119,22 @@ if uploaded_files:
                     # Menampilkan plot di Streamlit
                     st.pyplot(fig)
 
-                    # WordCloud untuk setiap sentimen
-                    def generate_wordcloud(data, labels, label, title):
-                        text = " ".join([doc for doc, lbl in zip(data, labels) if lbl == label])
-                        if text.strip():  # Hanya jika teks tidak kosong
-                            wordcloud = WordCloud(width=800, height=400, background_color="white").generate(text)
-                            plt.figure(figsize=(7, 4))
-                            plt.imshow(wordcloud, interpolation="bilinear")
-                            plt.axis("off")
-                            plt.title(title, fontsize=16)
-                            st.pyplot(plt)
+                #     # WordCloud untuk setiap sentimen
+                #     def generate_wordcloud(data, labels, label, title):
+                #         text = " ".join([doc for doc, lbl in zip(data, labels) if lbl == label])
+                #         if text.strip():  # Hanya jika teks tidak kosong
+                #             wordcloud = WordCloud(width=800, height=400, background_color="white").generate(text)
+                #             plt.figure(figsize=(7, 4))
+                #             plt.imshow(wordcloud, interpolation="bilinear")
+                #             plt.axis("off")
+                #             plt.title(title, fontsize=16)
+                #             st.pyplot(plt)
 
-                    X_test_word = test_data["cleaned_reviews"].tolist()
-                    generate_wordcloud(X_test_word, predictions, 'positif', f'WordCloud: Positif ({file.name})')
-                    generate_wordcloud(X_test_word, predictions, 'negatif', f'WordCloud: Negatif ({file.name})')
-                    generate_wordcloud(X_test_word, predictions, 'netral', f'WordCloud: Netral ({file.name})')
+                #     X_test_word = test_data["cleaned_reviews"].tolist()
+                #     generate_wordcloud(X_test_word, predictions, 'positif', f'WordCloud: Positif ({file.name})')
+                #     generate_wordcloud(X_test_word, predictions, 'negatif', f'WordCloud: Negatif ({file.name})')
+                #     generate_wordcloud(X_test_word, predictions, 'netral', f'WordCloud: Netral ({file.name})')
 
-                except Exception as e:
-                    st.error(f"Error saat menjalankan MKNN untuk {file.name}: {e}")
-                    continue
+                # except Exception as e:
+                #     st.error(f"Error saat menjalankan MKNN untuk {file.name}: {e}")
+                #     continue
