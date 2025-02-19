@@ -18,7 +18,7 @@ Unggah satu atau lebih file CSV atau XLSX dengan format berikut:
 @st.cache_data
 def load_static_train_data():
     try:
-        train_data = pd.read_excel("datalatih300.xlsx")  # Static file
+        train_data = pd.read_excel("datalatih200.xlsx")  # Static file
         return train_data.copy()  # Return a copy
     except Exception as e:
         st.error(f"Gagal memuat dataset latih statis: {e}")
